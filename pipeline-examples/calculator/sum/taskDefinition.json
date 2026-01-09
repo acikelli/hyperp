@@ -1,0 +1,11 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "sum",
+      "dockerfilePath": "pipeline-examples/calculator/sum/Dockerfile"
+    }
+  ],
+  "cpu": "1024",
+  "memory": "2048",
+  "requiresCompatibilities": ["FARGATE"]
+}

@@ -1,0 +1,11 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "z",
+      "dockerfilePath": "pipeline-examples/calculator/z/Dockerfile"
+    }
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "requiresCompatibilities": ["FARGATE"]
+}

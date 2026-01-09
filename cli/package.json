@@ -1,0 +1,29 @@
+{
+  "name": "hyperp",
+  "version": "1.0.0",
+  "description": "CLI tool for Hyperp - Fully automated pay-as-you-go compute platform on AWS",
+  "main": "bin/hyperp.js",
+  "bin": {
+    "hyperp": "./bin/hyperp.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "hyperp",
+    "aws",
+    "ci-cd",
+    "workflow",
+    "automation"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^12.0.0",
+    "inquirer": "^8.2.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+

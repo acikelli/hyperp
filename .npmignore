@@ -1,0 +1,68 @@
+# Development files
+node_modules/
+.git/
+.gitignore
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# CDK
+cdk.out/
+.cdk.staging/
+cdk.context.json
+cdk-outputs.json
+
+# Build artifacts (we include dist/ in files, but exclude source maps if needed)
+*.map
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+.temp/
+*.pem
+githubappkey.pem
+
+# Documentation that's not needed in package
+docs-to-be-removed/
+docs/images/
+
+# Examples (optional - you might want to include these)
+# pipeline-examples/
+
+# Utilities (optional - you might want to include these)
+# utilities/
+
+# TypeScript source (we only need compiled JS)
+# But we might want to include .ts files for source maps
+# *.ts
+# !dist/**/*.ts
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# IDE
+*.code-workspace
+
+# Include package-lock.json (npm excludes it by default)
+!package-lock.json
+

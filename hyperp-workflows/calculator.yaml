@@ -1,0 +1,33 @@
+branches:
+  - wf-test
+  - main
+workflowName: Calculator
+workflowDescription: This workflow makes calculation for the function f(x) = (x * y) + (x / z) by randomly generating values for x, y and z.
+artifacts:
+  shared:
+    - name: shared-folder
+jobs:
+  - jobName: Generate x
+    jobDescription: Generate random value for x
+    taskDefinitionPath: pipeline-examples/calculator/x/taskDefinition.json
+  - jobName: x * y
+    jobDescription: Creates a random value for y and multiplies x with y
+    taskDefinitionPath: pipeline-examples/calculator/y/taskDefinition.json
+    dependsOn:
+      - Generate x
+  - jobName: x / z
+    jobDescription: Creates a random value for z and divides x by z.
+    taskDefinitionPath: pipeline-examples/calculator/z/taskDefinition.json
+    dependsOn:
+      - Generate x
+    imageBuildResources:
+      cpu: "1024"
+      memory: "2048"
+    downloadable: true
+    concurrency: 2
+  - jobName: (x * y) + (x / z)
+    jobDescription: Sums the previous calculations
+    taskDefinitionPath: pipeline-examples/calculator/sum/taskDefinition.json
+    dependsOn:
+      - x * y
+      - x / z

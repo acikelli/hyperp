@@ -1,0 +1,13 @@
+{
+  "name": "efs-controller",
+  "version": "1.0.0",
+  "description": "EFS Controller Lambda for Hyperp",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/node": "^22.10.2"
+  }
+}
+

@@ -1,0 +1,14 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "process-data",
+      "dockerfilePath": "pipeline-examples/simple-data-processing/data-process/process-data/Dockerfile",
+      "cpu": 1024,
+      "memory": 2048,
+      "essential": true
+    }
+  ],
+  "cpu": "1024",
+  "memory": "2048",
+  "requiresCompatibilities": ["FARGATE"]
+}

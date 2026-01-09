@@ -1,0 +1,11 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "y",
+      "dockerfilePath": "pipeline-examples/calculator/y/Dockerfile"
+    }
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "requiresCompatibilities": ["FARGATE"]
+}

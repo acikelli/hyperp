@@ -1,0 +1,30 @@
+name: downloadable-creator image build
+
+on:
+  push:
+    paths:
+      - "utilities/downloadable-creator/**"
+    branches:
+      - master
+      - wf-test
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Upload to ECR
+        working-directory: ./utilities/downloadable-creator
+        run: |
+          aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/b6g9t8f1  
+          docker build -t downloadable-creator .
+          docker tag downloadable-creator:latest public.ecr.aws/b6g9t8f1/downloadable-creator:latest
+          docker push public.ecr.aws/b6g9t8f1/downloadable-creator:latest
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}

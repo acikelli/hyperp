@@ -1,0 +1,11 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "inject-sales",
+      "dockerfilePath": "pipeline-examples/simple-data-processing/data-injection/inject-sales/Dockerfile"
+    }
+  ],
+  "cpu": "1024",
+  "memory": "2048",
+  "compatibilities": ["FARGATE"]
+}

@@ -1,0 +1,11 @@
+{
+  "containerDefinitions": [
+    {
+      "name": "inject-users",
+      "dockerfilePath": "pipeline-examples/simple-data-processing/data-injection/inject-users/Dockerfile"
+    }
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "requiresCompatibilities": ["FARGATE"]
+}

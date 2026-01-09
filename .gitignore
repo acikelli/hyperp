@@ -1,0 +1,47 @@
+# Compiled output
+*.js
+*.d.ts
+*.js.map
+dist/
+build/
+!cli/**/*.js
+
+# Dependencies
+node_modules/
+
+# CDK
+cdk.out/
+.cdk.staging/
+cdk.context.json
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+.temp/
+*.pem
+githubappkey.pem
+hyperp-package-lock.json
+
