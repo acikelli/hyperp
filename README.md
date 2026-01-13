@@ -4,7 +4,7 @@ hyperp is a fully automated serverless compute platform that runs on AWS. It fol
 
 ![Alt text](./docs/images/hyperp-overview.png)
 
-[How it works](./docs/arhitecture.md)
+[How it works](./docs/architecture.md)
 
 [Setup instructions](./docs/setup.md)
 
