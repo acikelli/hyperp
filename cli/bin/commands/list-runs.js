@@ -117,6 +117,27 @@ function formatDuration(startDate, endDate) {
   }
 }
 
+function formatTimePassed(startDate) {
+  if (!startDate) return "N/A";
+  const start = new Date(startDate);
+  const now = new Date();
+  const diffMs = now - start;
+  const diffSec = Math.floor(diffMs / 1000);
+  const diffMin = Math.floor(diffSec / 60);
+  const diffHour = Math.floor(diffMin / 60);
+  const diffDay = Math.floor(diffHour / 24);
+
+  if (diffDay > 0) {
+    return `${diffDay}d ago`;
+  } else if (diffHour > 0) {
+    return `${diffHour}h ago`;
+  } else if (diffMin > 0) {
+    return `${diffMin}m ago`;
+  } else {
+    return `${diffSec}s ago`;
+  }
+}
+
 // Build dependency graph for DAG display
 function buildDependencyGraph(jobRuns) {
   const graph = {
@@ -310,10 +331,10 @@ async function listRuns(commitHash = null) {
 
     const choices = workflowRuns.map((run, index) => {
       const statusIcon = formatStatus(run.status);
+      const startedTime = formatTimePassed(run.startDate || run.createdAt);
+      const branch = run.branch || "N/A";
       return {
-        name: `${statusIcon} ${run.workflowName} - Created: ${formatDate(
-          run.createdAt
-        )}`,
+        name: `${statusIcon} ${run.workflowName} | ${branch} | ${startedTime}`,
         value: index,
         short: run.workflowName,
       };
@@ -373,6 +394,9 @@ async function showWorkflowRunDetails(apiUrl, entityId) {
     }
     console.log(`Branch: ${workflowRun.branch}`);
     console.log(`Commit Hash: ${workflowRun.commitHash}`);
+    if (workflowRun.commitMessage) {
+      console.log(`Commit Message: ${workflowRun.commitMessage}`);
+    }
     console.log(`Created At: ${formatDate(workflowRun.createdAt)}`);
     console.log(`Updated At: ${formatDate(workflowRun.updatedAt)}`);
 

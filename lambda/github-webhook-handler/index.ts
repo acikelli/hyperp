@@ -361,6 +361,9 @@ export const handler = async (event: any): Promise<any> => {
     );
     console.log(`${matchingWorkflows.length} workflows match branch ${branch}`);
 
+    // Extract commit message from head_commit
+    const commitMessage = body.head_commit?.message || "";
+
     // Trigger workflows
     for (const workflow of matchingWorkflows) {
       await triggerWorkflowRun(
@@ -373,7 +376,8 @@ export const handler = async (event: any): Promise<any> => {
         repo,
         commits,
         installationId.toString(),
-        body.before // Previous commit hash
+        body.before, // Previous commit hash
+        commitMessage
       );
     }
 
@@ -756,7 +760,8 @@ async function triggerWorkflowRun(
   repo: string,
   commits: any[],
   installationId: string,
-  previousCommitHash?: string
+  previousCommitHash?: string,
+  commitMessage?: string
 ): Promise<void> {
   console.log(`Triggering workflow run: ${workflow.workflowName}`);
 
@@ -1068,6 +1073,7 @@ async function triggerWorkflowRun(
     githubRepositoryId: repositoryId,
     commitHash: commitHash,
     branch: branch,
+    commitMessage: commitMessage || "", // Store commit message
     taskDefinitionPaths: workflow.taskDefinitionPaths || {}, // Store task definition paths
     sharedVolumes: workflow.sharedVolumes || [], // Store shared volumes from workflow
     createdAt: timestamp,

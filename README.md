@@ -2,9 +2,21 @@
 
 hyperp is a fully automated serverless compute platform that runs on AWS. It follows fully GitOps model, handles CI/CD automatically, provides a storage mechanism for passing artifacts between jobs and downloading them, and gives cost estimation for compute and storage usages per run. You can easily interact with the platform using its CLI tool.
 
-[How it works](./how-it-works.md)
+![Alt text](./docs/images/hyperp-overview.png)
+
+[How it works](./docs/arhitecture.md)
 
 [Setup instructions](./docs/setup.md)
+
+## CLI Features
+
+![Alt text](./docs/images/cli.gif)
+
+- Monitor triggerred runs and view their details.
+- View task logs.
+- View cost estimations for compute resource usage per task/job/workflow.
+- Get storage usage per job/workflow.
+- Download artifacts to your local machine.
 
 ## Architecture Overview
 
@@ -17,7 +29,7 @@ Hyperp consists of the following components:
 - **ECR Repository**: For storing built Docker images
 - **EFS File System**: For sharing artifacts between jobs
 - **DynamoDB**: For storing workflow metadata, runs, and state
-- **S3 Bucket**: For storing GitHub App credentials
+- **S3 Bucket**: For downloading artifacts
 - **EventBridge**: For tracking ECS task state changes
 
 ### Lambda Functions

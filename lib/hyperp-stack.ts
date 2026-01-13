@@ -168,14 +168,6 @@ export class HyperpStack extends cdk.Stack {
       indexName: "GSI3",
       partitionKey: { name: "GSI3-PK", type: dynamodb.AttributeType.STRING },
       sortKey: { name: "GSI3-SK", type: dynamodb.AttributeType.STRING },
-      projectionType: dynamodb.ProjectionType.INCLUDE,
-      nonKeyAttributes: [
-        "workflowName",
-        "status",
-        "createdAt",
-        "updatedAt",
-        "entityId",
-      ],
     });
 
     // ============================================

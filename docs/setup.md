@@ -53,6 +53,8 @@ hyperp deploy --github-app-id <your app id > --github-app-webhook-secret <your s
 
 ![Alt text](./images/deployment-outputs.png)
 
-Once the deployment is done, it outputs the GitHub webhook handler URL. Copy the URL and replace the temporary webhook URL you entered while creating the GitHub app with the actual URL created.
+Once the deployment is done, it outputs the GitHub webhook handler URL. Copy the URL and replace the temporary webhook URL you entered while creating the GitHub app with the actual webhook function URL created.
 
 Upload your GitHub App's private key to the created bucket using instructed command S3 cp command.
+
+`   aws s3 cp githubappkey.pem s3://hyperpstack-hyperpartifactsbucket168ba302-8147hvkk1goc/githubappkey.pem`

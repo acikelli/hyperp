@@ -42,6 +42,7 @@ interface WorkflowRunEntity {
   githubRepositoryId: string;
   commitHash: string;
   branch: string;
+  commitMessage?: string; // Commit message from head_commit
   estimatedCost?: number;
   storageUsage?: number;
   failureReason?: string;
@@ -435,6 +436,7 @@ async function getWorkflowRunsByCommitHash(commitHash: string): Promise<any[]> {
       workflowName: run.workflowName,
       commitHash: run.commitHash,
       branch: run.branch,
+      commitMessage: run.commitMessage || "", // Include commit message
       status: run.status,
       startDate: run.createdAt,
       endDate:
@@ -543,7 +545,10 @@ async function getLastWorkflowRuns(limit: number): Promise<any[]> {
   return workflowRuns.map((run) => ({
     id: run.entityId,
     workflowName: run.workflowName,
+    branch: run.branch,
+    commitMessage: run.commitMessage || "", // Include commit message
     status: run.status,
+    startDate: run.createdAt,
     createdAt: run.createdAt,
     updatedAt: run.updatedAt,
     entityId: run.entityId,
@@ -601,6 +606,7 @@ async function getWorkflowRunByEntityId(entityId: string): Promise<any | null> {
     workflowName: run.workflowName,
     commitHash: run.commitHash,
     branch: run.branch,
+    commitMessage: run.commitMessage || "", // Include commit message
     status: run.status,
     failureReason: run.failureReason,
     startDate: run.createdAt,

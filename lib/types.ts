@@ -96,6 +96,7 @@ export interface WorkflowRunEntity {
   githubRepositoryId: string;
   commitHash: string;
   branch: string;
+  commitMessage?: string; // Commit message from head_commit
   taskDefinitionPaths?: Record<string, string>; // Job name -> task definition path
   sharedVolumes?: Array<{ name: string }>; // Shared volumes defined in workflow
   estimatedCost?: number; // Total estimated Fargate cost in USD (sum of all job runs)
