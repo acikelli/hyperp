@@ -57,4 +57,4 @@ Once the deployment is done, it outputs the GitHub webhook handler URL. Copy the
 
 Upload your GitHub App's private key to the created bucket using instructed command S3 cp command.
 
-`   aws s3 cp githubappkey.pem s3://hyperpstack-hyperpartifactsbucket168ba302-8147hvkk1goc/githubappkey.pem`
+`   aws s3 cp githubappkey.pem s3://<created bucket name>/githubappkey.pem`

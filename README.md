@@ -1,6 +1,6 @@
 # hyperp - Fully Automated Serverless Compute Platform
 
-hyperp is a fully automated serverless compute platform that runs on AWS. It follows fully GitOps model, handles CI/CD automatically, provides a storage mechanism for passing artifacts between jobs and downloading them, and gives cost estimation for compute and storage usages per run. You can easily interact with the platform using its CLI tool.
+hyperp is a fully automated serverless compute platform built on AWS. It embraces a complete GitOps workflow, automatically managing CI/CD pipelines while providing integrated artifact storage for data transfer between jobs and local download. The platform includes built-in cost estimation for both compute and storage resources per run, and offers a straightforward CLI for easy interaction.
 
 ![Alt text](./docs/images/hyperp-overview.png)
 

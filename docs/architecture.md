@@ -1,6 +1,6 @@
 # Hyperp Architecture
 
-hyperp is a fully automated serverless compute platform that runs on AWS. It follows fully GitOps model, handles CI/CD automatically, provides a storage mechanism for passing artifacts between jobs and downloading them to your local machine, and gives cost estimation for compute and storage usages per run. You can easily interact with the platform using its CLI tool. [Setup instructions](./setup.md)
+hyperp is a fully automated serverless compute platform built on AWS. It embraces a complete GitOps workflow, automatically managing CI/CD pipelines while providing integrated artifact storage for data transfer between jobs and local download. The platform includes built-in cost estimation for both compute and storage resources per run, and offers a straightforward CLI for easy interaction. [Setup instructions](./setup.md)
 
 ![Alt text](./images/hyperp-overview.png)
 
@@ -153,8 +153,6 @@ For the push destination, the system constructs the image tag as `{commitHash}-{
 ### Change Detection Mechanism
 
 Since this was the workflow's initial execution, image build jobs were triggered for each of the four jobs defined in the YAML. The system also automatically detects code changes in subsequent commits and builds only the required images.
-
-Lets examine the underlying CI/CD mechanism:
 
 ```
 pipeline-examples/
