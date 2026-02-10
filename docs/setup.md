@@ -16,30 +16,24 @@ Before deploying hyperp, ensure you have:
 
 ## Creating the GitHub app.
 
-Create a GitHub App from [here](https://github.com/settings/apps/new)
+- Create a GitHub App from [here](https://github.com/settings/apps/new). You can give any name to your app.
 ![Alt text](./images/create-gh-app.png)
 
-You can give any name to your app.
-
+In the webhook section, enter a temporary URL and a secret value. We’ll come back and update the webhook URL after deployment, and provide the entered secret value to our CLI tool.
 ![Alt text](./images/gh-webhook-config.png)
 
-On the webhook section, enter a temporary URL(we'll come back and update once we obtain actual URL) and a secret value(save the secret value).
+Set the `Contents` option to readonly in the Repository Permissions section.
+![Alt text](./images/content-selection.png)
 
-![Alt text](./images/gh-webhook-config.png)
-
-Under the repository permissions, select the content option readonly.
-
+Check push in the subscribe to events section.
 ![Alt text](./images/subscribe-events.png)
 
-Under the subscribe to events, check push.
-
+- Once the app is created, generate a private key and save it for the next steps. We'll upload this private key to S3 bucket that created after the deployment.
 ![Alt text](./images/generate-private-key.png)
 
-Once the app is created, generate a private key and save it for the next steps.
-
+- Install the created app in your own GitHub account.
 ![Alt text](./images/install-gh-app.png)
 
-Install the created app in your own GitHub account.
 
 ## Install and deploy hyperp
 
@@ -53,8 +47,8 @@ hyperp deploy --github-app-id <your app id > --github-app-webhook-secret <your s
 
 ![Alt text](./images/deployment-outputs.png)
 
-Once the deployment is done, it outputs the GitHub webhook handler URL. Copy the URL and replace the temporary webhook URL you entered while creating the GitHub app with the actual webhook function URL created.
+- Once the deployment is done, the CLI tool outputs the GitHub webhook handler URL. Copy the URL and replace the temporary webhook URL you entered while creating the GitHub app with the actual webhook function URL created.
 
-Upload your GitHub App's private key to the created bucket using instructed command S3 cp command.
+- Upload your GitHub App's private key to the created bucket with the instructed S3 cp command .
 
-`   aws s3 cp githubappkey.pem s3://<created bucket name>/githubappkey.pem`
+`aws s3 cp githubappkey.pem s3://<created bucket name>/githubappkey.pem`
